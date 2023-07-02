@@ -3,7 +3,7 @@ DONGU:
 add bx, ax
 inc ax
 cmp ax, 40
-jne DONGU
+jbe DONGU
 mov toplam, bx
 
 RET

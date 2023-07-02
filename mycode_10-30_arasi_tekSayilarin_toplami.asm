@@ -1,48 +1,35 @@
-    
-org 100h    
-    
-    
-MOV CX, m ; CX, m degeriyle baslar
-SUB CX, n ; n degerinden cikarilarak eleman sayisi bulunur
-MOV BX, n ; BX, n degeriyle baslar
-mov si, 2  
-
-REPEAT_LOOP:
-
-CMP BX, m ; BX, m'den kucuk olmalidir  
-
-JG EXIT_LOOP
-
-MOV DX, 0 ; DX, BX degeri ile mod islemi yapmak icin kullanilir
-MOV AX, BX
-DIV si
-CMP DX, 0 ; BX, tek sayi mi?  
-JNE NOT_ODD 
-
-ADD sum, BX ; sum, BX degeriyle toplanir
-INC count; count, eleman sayisini tutar
-
-NOT_ODD:
-
-INC BX ; BX, her dongu adiminda bir arttirilir 
-
-JMP REPEAT_LOOP
+org 100h
 
 
-EXIT_LOOP:
+;toplam dw 0
+;sayac dw 0
 
-MOV DX, 0
-MOV AX, sum
-DIV count ; sum, eleman sayisi ile bolunerek ortalama bulunur
-MOV average, AX
+;mov cx, 10
 
+;dongu:
+;add ax, cx
+;inc sayac
+;add cx, 2
+;cmp cx, 30
+;jle dongu
+;cwd
+;idiv sayac
+;mov toplam, ax   
+  
+;ret   
 
+mov ax, 10
+mov bx, 0
 
-
-RET
-
-n DW 10
-m DW 30
-sum DW 0
-count DW 0
-average DW 0
+dongu:
+add bx, ax
+inc sayac
+add ax, 2
+cmp ax,30
+jbe dongu
+mov ax,bx
+div sayac
+mov sonuc, ax
+ret
+sayac dw 0
+sonuc dw 0
